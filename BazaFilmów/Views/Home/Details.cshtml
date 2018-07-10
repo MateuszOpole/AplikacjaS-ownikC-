@@ -1,0 +1,48 @@
+﻿@model BazaFilmów.Models.Filmy
+
+@using Microsoft.Owin.Security
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Filmy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tytuł
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tytuł)
+        </dd>
+
+        <dt>
+            Reżyser
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reżyser)
+        </dd>
+
+        <dt>
+           Data premiery
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_premiery)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.ID }) |
+  
+           @Html.ActionLink("Powrót do listy", "Index")
+           
+       
+</p>

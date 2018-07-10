@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FilmyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Filmy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tytuł" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="reżyser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="data_premiery" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Oceny">
+    <Key>
+      <PropertyRef Name="Id_usera" />
+    </Key>
+    <Property Name="Id_usera" Type="int" Nullable="false" />
+    <Property Name="Id_filmu" Type="int" Nullable="false" />
+    <Property Name="ocena" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="FilmyModelStoreContainer">
+    <EntitySet Name="Filmy" EntityType="Self.Filmy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oceny" EntityType="Self.Oceny" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

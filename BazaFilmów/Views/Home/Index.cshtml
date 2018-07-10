@@ -1,0 +1,198 @@
+﻿
+
+@model PagedList.IPagedList<BazaFilmów.Models.Filmy>
+@using PagedList.Mvc;
+
+@Scripts.Render("~/zegar")
+<meta name="viewport" content="width=device-width" />
+<title>Index</title>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+<link href="~/Content/css/fontello.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script href="~/Content/zegar.js"> </script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+@Scripts.Render("~/Content/zegar.js");
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+   
+    <link href="~/Content/css/fontello.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script href="~/Content/zegar.js"> </script>
+    @Scripts.Render("~/Content/zegar.js");
+    <script>
+        var zmienna = "";
+        function zmianateksu(num) {
+            if (num == 1) {
+                zmienna = "Cześć tu Mateusz Kim jestem ? Jestem studentem 3 roku informatyki na Politechnice Opolskiej.Programuję w C# oraz język zapytań sql wraz z bazami danych.Coś więcej o mnie i co lubię ? Odwiedź moją zakładkę hobby ;)";
+            }
+            if (num == 2) {
+                zmienna = "Moim hobby są gry logiczne, lubie programować oraz uprawiać różnego rodzaju sporty naprzykład piłkę nożną, lubie biegać oraz odwiedzam siłownie  Dlaczego mam kamere w hobby? ...ponieważ najczęściej oglądam film jak można się domyśleć.Przy okazji zapraszam na mój subiektywny ranking filmowy <a href=\"#one\"> ranking filmów </a>";}
+            if (num == 3) {
+                zmienna = "tel.kom: 537 601 926. <br> mail: mkazior09@gmail.com <br> adres: 46 - 380 Klekotna, ul.Dobrodzieńska 15";
+            }
+            if (num == 4) { zmienna = "Curriculum vitae <p> Wykształcenie </p><ul><li>2010 - 2013: Liceum ogólnokształcące im.Adama Mickiewicza w Dobrodzieniu</li> <li>2015: BMW Staż</li> <li>2017: Pracownik BMW Dingolfing</li></ul>"; }
+            document.getElementById('div1').innerHTML = zmienna;
+        }
+    </script>
+
+</head>
+<body class="pp" onload="odliczanie();" style="background-color:gainsboro;">
+
+    <div style="height:50px;">
+
+
+        </div>
+
+    <div id="container">
+
+        <div class="rectangle">
+            <div id="logo"> Mateusz Kazior</div>
+            <div id="zegar"> </div>
+
+            <div style="clear:both;"></div>
+        </div>
+        <div class="square">
+            <div class="tile1"  onclick="zmianateksu(1)">  <i class="icon-user"></i> <br>Parę słów o mnie </div>
+            <div class="tile1" onclick="zmianateksu(2)"><i class=" icon-videocam"></i> <br>Moje zainteresowania</div>
+            <div style="clear:both;"></div>
+
+            <div class="tile2" onclick="zmianateksu(3)"><br><i class="icon-mail"></i> <br>Kontakt</div>
+            <div class="tile3" onclick="zmianateksu(4)"> <br><i class="icon-graduation-cap"></i> <br>Curriculum Vitae</div>
+            <div style="clear:both;"></div>
+            <div class="tile4" style="color:gainsboro; width:480px; height:142px;"> Ludzie mówią że bez miłości nie da się żyć ...<br><br>Osobiście uważam, że tlen jest ważniejszy</div>
+        </div>
+        <div class="square">
+            <div class="tile5"  id="div1" style="color:gainsboro; width:480px; height:304px;"> <div>Witam wszystkich internautów na moim blogu<br><br><br><br>...P.S.: Miłego surfowania po mojej stronie</div></div>
+            <div class="yt"><a href="https://www.youtube.com/channel/UCMT1agtsWqnpvtEnwvJePnA" class="social" target="_blank"> <i class="icon-youtube"></i></a></div>
+            <div class="fb"><a href="https://www.facebook.com/mateusz.kazior.71" class="social" target="_blank"> <i class="icon-facebook"></i> </a></div>
+            <div class="gplus"><a href="https://plus.google.com/100538022611571230405/posts" class="social" target="_blank"> <i class="icon-gplus"></i></a></div>
+            <div class="tw"><a href="https://twitter.com/?lang=pl" class="social" target="_blank"><i class="icon-twitter-squared"></i> </a></div>
+            <div style="clear:both;"></div>
+        </div>
+        <div style="clear:both;">  </div>
+        
+
+
+       
+
+
+
+
+
+
+
+    </div>
+
+    <p>
+    </p>
+    <section id="one">
+        <div style="float:left;margin: 40px;width:600px;">
+
+            @using (Html.BeginForm())
+            {
+                if (Request.IsAuthenticated == false)
+                { <div>Wyszukiwarka </div>
+                <div>@Html.TextBox("findFilm")</div>
+                <input type="submit" value="Szukaj" />
+                }
+                if (Request.IsAuthenticated)
+                {
+                    <div style="text-align:left;">Wyszukiwarka </div>
+                    <div style="text-align:left;">
+                        @Html.TextBox("findFilm") @if (Request.IsAuthenticated)
+                        {@Html.ActionLink("Dodaj film", "Create")}
+                    </div>
+                    <div style="text-align:left;"><input type="submit" value="Szukaj" /></div>
+                }
+            }
+        </div>
+        <div style="margin:20px;">
+
+        </div>
+    </section>
+
+        <table class="table" style="text-align:Left;" style="background-color:#404040;">
+            <tr>
+                <th style="text-align:center;">
+
+                   <a href="#one"> @Html.ActionLink("Tytuł", "Index", new { sortowanie = ViewBag.SortByTytuł })</a>
+                </th>
+                <th style="text-align:center;">
+                    @Html.ActionLink("Reżyser", "Index", new { sortowanie = ViewBag.SortByReżyser })
+                </th>
+                <th style="text-align:center;">
+                    @Html.ActionLink("Data premiery", "Index", new { sortowanie = ViewBag.SortByData })
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tytuł)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reżyser)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.data_premiery)
+                    </td>
+                    <td></td>
+                    <td>
+                        @{  if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Edytuj", "Edit", new { id = item.ID })
+                                @Html.ActionLink("Szczegóły", "Details", new { id = item.ID })
+                                @Html.ActionLink("Usuń", "Delete", new { id = item.ID })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Szczegóły", "Details", new { id = item.ID })
+                            }
+                        }
+
+
+
+                    </td>
+                </tr>
+
+                            }
+
+        </table>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortowanie = ViewBag.SortBy, findFilm = ViewBag.findFilm }))
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('a[href^="#"]').on('click', function (event) {
+
+                var target = $($(this).attr('href'));
+
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 10000);
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FilmyModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Filmy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tytuł" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="reżyser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="data_premiery" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Oceny">
+    <Key>
+      <PropertyRef Name="Id_usera" />
+    </Key>
+    <Property Name="Id_usera" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id_filmu" Type="int" Nullable="false" />
+    <Property Name="ocena" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Oceny_ToTable">
+    <End Role="Filmy" Type="Self.Filmy" Multiplicity="1" />
+    <End Role="Oceny" Type="Self.Oceny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filmy">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Oceny">
+        <PropertyRef Name="Id_filmu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FilmyModel1StoreContainer">
+    <EntitySet Name="Filmy" EntityType="Self.Filmy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oceny" EntityType="Self.Oceny" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Oceny_ToTable" Association="Self.FK_Oceny_ToTable">
+      <End Role="Filmy" EntitySet="Filmy" />
+      <End Role="Oceny" EntitySet="Oceny" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

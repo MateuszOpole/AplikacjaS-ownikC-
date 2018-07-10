@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FilmyModelStoreContainer" CdmEntityContainer="FilmyEntities">
+    <EntitySetMapping Name="Filmy">
+      <EntityTypeMapping TypeName="FilmyModel.Filmy">
+        <MappingFragment StoreEntitySet="Filmy">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="tytuł" ColumnName="tytuł" />
+          <ScalarProperty Name="reżyser" ColumnName="reżyser" />
+          <ScalarProperty Name="data_premiery" ColumnName="data_premiery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oceny">
+      <EntityTypeMapping TypeName="FilmyModel.Oceny">
+        <MappingFragment StoreEntitySet="Oceny">
+          <ScalarProperty Name="ocena" ColumnName="ocena" />
+          <ScalarProperty Name="Id_filmu" ColumnName="Id_filmu" />
+          <ScalarProperty Name="Id_usera" ColumnName="Id_usera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

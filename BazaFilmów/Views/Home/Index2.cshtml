@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BazaFilmów.Models.Filmy>
+
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index2</h2>
+
+<p>
+    @Html.ActionLink("Dodaj film", "Create")
+</p>
+<table class="table"  style="text-align:center;" " style="background-color:#404040;">
+    <tr>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(model => model.tytuł)
+        </th>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(model => model.reżyser)
+        </th>
+        <th style="text-align:center;">
+            @Html.DisplayNameFor(model => model.data_premiery)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tytuł)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reżyser) dupa
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_premiery)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Usuń", "Delete", new { id = item.ID })
+        
+        </td>
+    </tr>
+}
+
+</table>
